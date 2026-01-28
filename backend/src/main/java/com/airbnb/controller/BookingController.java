@@ -3,6 +3,7 @@ package com.airbnb.controller;
 import com.airbnb.dto.BookingRequest;
 import com.airbnb.model.Booking;
 import com.airbnb.service.BookingService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -30,7 +31,7 @@ public class BookingController {
     
     @PostMapping
     public ResponseEntity<Booking> createBooking(
-            @RequestBody BookingRequest request,
+            @Valid @RequestBody BookingRequest request,
             @AuthenticationPrincipal UserDetails userDetails) {
         return ResponseEntity.ok(bookingService.createBooking(request, userDetails.getUsername()));
     }

@@ -1,5 +1,6 @@
 package com.airbnb.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
     
+    @JsonIgnore
     @Column(nullable = false)
     private String password;
     
@@ -36,9 +38,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole role = UserRole.GUEST;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "host", cascade = CascadeType.ALL)
     private Set<Property> properties = new HashSet<>();
     
+    @JsonIgnore
     @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL)
     private Set<Booking> bookings = new HashSet<>();
     

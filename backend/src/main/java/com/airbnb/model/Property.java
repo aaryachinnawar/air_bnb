@@ -1,6 +1,8 @@
 package com.airbnb.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,6 +39,7 @@ public class Property {
     
     private String imageUrl;
     
+    @DecimalMin(value = "0.01", message = "Price per night must be greater than 0")
     @Column(nullable = false)
     private BigDecimal pricePerNight;
     
@@ -53,9 +56,11 @@ public class Property {
     @JoinColumn(name = "host_id")
     private User host;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
     private Set<Booking> bookings = new HashSet<>();
     
+    @JsonIgnore
     @OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
     private Set<Review> reviews = new HashSet<>();
     

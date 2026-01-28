@@ -42,6 +42,17 @@ public class BookingService {
         Property property = propertyRepository.findById(request.getPropertyId())
             .orElseThrow(() -> new RuntimeException("Property not found"));
         
+        // Validate dates
+        if (request.getCheckOutDate().isBefore(request.getCheckInDate()) || 
+            request.getCheckOutDate().isEqual(request.getCheckInDate())) {
+            throw new RuntimeException("Check-out date must be after check-in date");
+        }
+        
+        // Validate number of guests
+        if (property.getMaxGuests() != null && request.getNumberOfGuests() > property.getMaxGuests()) {
+            throw new RuntimeException("Number of guests exceeds property capacity");
+        }
+        
         Booking booking = new Booking();
         booking.setProperty(property);
         booking.setGuest(guest);
