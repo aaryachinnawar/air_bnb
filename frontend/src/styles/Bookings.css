@@ -1,0 +1,139 @@
+.bookings-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.bookings-container h1 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.no-bookings {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.no-bookings p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.no-bookings .btn-primary {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.booking-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+}
+
+.booking-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.booking-info {
+  flex: 1;
+}
+
+.booking-info h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.booking-location {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.booking-dates {
+  margin: 15px 0;
+  padding: 15px;
+  background: #f7f7f7;
+  border-radius: 8px;
+}
+
+.booking-dates p {
+  color: #666;
+  margin: 8px 0;
+}
+
+.booking-total {
+  font-size: 18px;
+  margin: 15px 0;
+}
+
+.booking-status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.status-confirmed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.status-completed {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.btn-cancel {
+  background: #fff;
+  color: #e74c3c;
+  border: 2px solid #e74c3c;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background: #e74c3c;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .booking-card {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn-cancel {
+    width: 100%;
+  }
+}

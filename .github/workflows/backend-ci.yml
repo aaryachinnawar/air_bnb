@@ -1,0 +1,55 @@
+name: Backend CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-ci.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'backend/**'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+        
+    - name: Build with Maven
+      working-directory: ./backend
+      run: mvn clean install -DskipTests
+      
+    - name: Run tests
+      working-directory: ./backend
+      run: mvn test
+      
+    - name: Build Docker image
+      if: github.event_name == 'push'
+      working-directory: ./backend
+      run: docker build -t airbnb-backend:${{ github.sha }} .
+      
+    - name: Run Docker image
+      if: github.event_name == 'push'
+      run: |
+        docker run -d -p 8080:8080 --name airbnb-backend airbnb-backend:${{ github.sha }}
+        sleep 20
+        
+    - name: Health check
+      if: github.event_name == 'push'
+      run: |
+        curl -f http://localhost:8080/api/properties || exit 1
+        
+    - name: Stop Docker container
+      if: always()
+      run: docker stop airbnb-backend || true
