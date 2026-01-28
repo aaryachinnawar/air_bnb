@@ -2,6 +2,10 @@
 
 A full-stack booking system similar to Airbnb, built with React.js for the frontend and Spring Boot for the backend.
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=aaryachinnawar/air_bnb)
+
+> 💡 **New!** Run this project instantly in GitHub Codespaces - no local setup required! See [CODESPACES.md](CODESPACES.md) for details.
+
 ## Features
 
 - **Property Listings**: Browse available properties with detailed information
@@ -49,7 +53,24 @@ air_bnb/
 
 ## Getting Started
 
-### Prerequisites
+### 🚀 Quick Start with GitHub Codespaces (Easiest)
+
+**No installation required!** Run the entire project in your browser:
+
+1. Click the **Code** button above
+2. Select **Codespaces** tab
+3. Click **Create codespace on main**
+4. Wait 2-3 minutes for setup
+5. Follow the [Codespaces Guide](CODESPACES.md) to start the application
+
+**Perfect for:**
+- Quick testing and demos
+- Contributing without local setup
+- Development from any device
+
+---
+
+### Prerequisites (for local development)
 - Java 17 or higher
 - Node.js 16 or higher
 - Docker and Docker Compose (optional)
