@@ -2,6 +2,8 @@
 
 This guide will help you run the AirBnB Clone booking system in GitHub Codespaces, a cloud-based development environment.
 
+> 📊 **Architecture Overview**: See [.github/ARCHITECTURE.md](.github/ARCHITECTURE.md) for a visual diagram of the Codespaces setup.
+
 ## 🚀 Quick Start
 
 ### Step 1: Open in Codespaces
